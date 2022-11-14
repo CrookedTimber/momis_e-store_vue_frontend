@@ -11,26 +11,31 @@
               <input type="text" class="input" v-model="username" />
             </div>
           </div>
+
           <div class="field">
             <label>Password</label>
             <div class="control">
-              <input type="text" class="input" v-model="password" />
+              <input type="password" class="input" v-model="password" />
             </div>
           </div>
+
           <div class="field">
-            <label>Confirm password</label>
+            <label>Repeat password</label>
             <div class="control">
-              <input type="text" class="input" v-model="password2" />
+              <input type="password" class="input" v-model="password2" />
             </div>
           </div>
+
           <div class="notification is-danger" v-if="errors.length">
             <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
           </div>
+
           <div class="field">
             <div class="control">
-              <button class="button is-dark">Sign Up</button>
+              <button class="button is-dark">Sign up</button>
             </div>
           </div>
+
           <hr />
           Or <Router-link to="/log-in">click here</Router-link> to log in!
         </form>
@@ -52,6 +57,9 @@ export default {
       password2: '',
       errors: [],
     };
+  },
+  mounted() {
+    document.title = 'Sign Up | Momis';
   },
   methods: {
     submitForm() {

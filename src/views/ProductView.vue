@@ -1,7 +1,7 @@
 <template>
   <div class="page-product">
     <div class="columns is-multiline">
-      <div class="column is-9">
+      <div class="column is-6">
         <figure class="image mb-6">
           <img v-bind:src="product.get_image" alt="" />
         </figure>
@@ -39,6 +39,7 @@ export default {
   },
   mounted() {
     this.getProduct();
+    document.title = `${this.product.name} | Momis`;
   },
   methods: {
     async getProduct() {

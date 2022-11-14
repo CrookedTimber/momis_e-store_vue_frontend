@@ -14,7 +14,7 @@
           <div class="field">
             <label>Password</label>
             <div class="control">
-              <input type="text" class="input" v-model="password" />
+              <input type="password" class="input" v-model="password" />
             </div>
           </div>
 
@@ -26,7 +26,7 @@
               <button class="button is-dark">Log in</button>
             </div>
           </div>
-          <hr />
+          <hr>
           Or <Router-link to="/sign-up">click here</Router-link> to sign up!
         </form>
       </div>

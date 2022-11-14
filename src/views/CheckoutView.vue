@@ -138,7 +138,7 @@ export default {
     };
   },
   mounted() {
-    document.title = 'Checkout | Djackets';
+    document.title = 'Checkout | Momis';
 
     this.cart = this.$store.state.cart;
 

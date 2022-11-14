@@ -47,11 +47,11 @@
           </div>
         </div>
         <div class="navbar-end">
-          <router-link to="/summer" class="navbar-item"
-            ><strong>Summer</strong></router-link
-          >
-          <router-link to="/winter" class="navbar-item"
-            ><strong>Winter</strong></router-link
+          <router-link
+            v-for="category in categories" 
+            v-bind:to="category.get_absolute_url"
+            class="navbar-item"
+            ><strong>{{ category.name }}</strong></router-link
           >
 
           <div class="navbar-item">
@@ -101,6 +101,7 @@ export default {
   data() {
     return {
       showMobileMenu: false,
+      categories: [],
       cart: {
         items: [],
       },
@@ -117,6 +118,7 @@ export default {
   },
   mounted() {
     this.cart = this.$store.state.cart;
+    this.getCategories();
   },
   computed: {
     cartTotalLength() {
@@ -125,6 +127,21 @@ export default {
         totalLength += this.cart.items[i].quantity;
       }
       return totalLength;
+    },
+  },
+  methods: {
+    async getCategories() {
+      this.$store.commit('setIsLoading', true);
+      await axios
+        .get('/api/v1/categories/')
+        .then((response) => {
+          this.categories = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      this.$store.commit('setIsLoading', false);
     },
   },
 };

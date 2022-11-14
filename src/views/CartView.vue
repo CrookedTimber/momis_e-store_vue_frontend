@@ -59,7 +59,7 @@ export default {
   },
   mounted() {
     this.cart = this.$store.state.cart;
-    console.log(this.cart);
+    document.title = 'Cart | Momis';
   },
   methods:{
     removeFromCart(item){

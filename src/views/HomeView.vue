@@ -9,9 +9,9 @@
 
     <div class="columns is-multiline">
       <div class="column is-12">
-        <h2 class="is-size-2 has-text-centered">Latest Products</h2>
+        <h2 class="is-size-2 has-text-centered">New Items</h2>
       </div>
-      <ProductBox v-for="product in latestProducts" v-bind:key="product.id" v-bind:product="product" />
+      <ProductBox v-for="product in newProducts" v-bind:key="product.id" v-bind:product="product" />
       
     </div>
   </div>
@@ -25,21 +25,21 @@ export default {
   name: 'HomeView',
   data() {
     return {
-      latestProducts: [],
+      newProducts: [],
     };
   },
   components: { ProductBox },
   mounted() {
-    this.getLatestProducts();
+    this.getNewProducts();
     document.title = 'Home | Momis';
   },
   methods: {
-    async getLatestProducts() {
+    async getNewProducts() {
       this.$store.commit('setIsLoading', true);
       await axios
-        .get('/api/v1/latest-products/')
+        .get('/api/v1/new-products/')
         .then((response) => {
-          this.latestProducts = response.data;
+          this.newProducts = response.data;
         })
         .catch((error) => {
           console.log(error);
